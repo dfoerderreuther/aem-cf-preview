@@ -1,0 +1,92 @@
+.Carousel {
+    margin: 0;
+    padding: 0;
+    background-color: #5514b4;
+    position: relative;
+}
+
+.Carousel button {
+    margin: 0; 
+    padding: 20px;
+    border-width: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #FFF;
+    position: absolute;
+    top: 170px;
+}
+.Carousel button.lft {
+    left: 20px;
+}
+.Carousel button.rgt {
+    right: 20px;
+}
+  
+.Carousel .item {
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}  
+
+.Carousel .item .text {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 580px;
+}
+.Carousel .item .text div.inner {
+    padding: 10px;;
+}
+.Carousel .item .action {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.Carousel img {
+    width: 600px;
+}
+.Carousel .action {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px 24px;
+    border-width: 1px;
+    border-radius: 4px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+
+.Carousel.small .item {
+    width: 300px;
+    height: 200px;
+}
+.Carousel.small button {
+    top: 80px;
+}
+.Carousel.small .item .text {
+    width: 280px;
+}
+.Carousel.small img {
+    width: 300px;
+}
+
+.Carousel.large .item {
+    width: 800px;
+    height: 500px;
+}
+.Carousel.large button {
+    top: 230px;
+}
+.Carousel .item .text {
+    width: 780px;
+}
+.Carousel img {
+    width: 800px;
+}

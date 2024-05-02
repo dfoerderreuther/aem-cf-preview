@@ -1,0 +1,39 @@
+.quote {
+    width: 400px;
+    margin: 0 auto;
+    border: 3px solid #5514b4;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.quote .text {
+    font-size: large;
+    font-style: italic;
+}
+
+.quote p.name {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+.quote p.title {
+    margin: 0;
+    padding: 0;
+}
+
+.quote .image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.quote .image img {
+    height: 100px;
+}
+
+.cfTitle {
+  padding: 10px 24px;
+  border-bottom: 1px solid #5514b4;
+}
