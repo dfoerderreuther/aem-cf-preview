@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
 import './Quote.css'
+import AEMHeadless from '@adobe/aem-headless-client-js';
 
 // http://localhost:3000/preview/m10quote?param=${contentFragment.path}
 
 const DOMAIN = 'https://publish-p91256-e801658.adobeaemcloud.com';
-
-
+const ENDPOINT = '/graphql/execute.json';
 
 export default function Quote() {
     const [path, setPath] = useState('');
     const [variations, setVariations] = useState([])
     
-    const variations_endpoint = '/graphql/execute.json/dfsite/m10QuoteVariarionsByPath';
+
+    const aemHeadlessClient = new AEMHeadless({
+        serviceURL: DOMAIN,
+        endpoint: ENDPOINT
+    })
 
     useEffect(() => {
         let queryParameters = new URLSearchParams(window.location.search)
@@ -20,10 +24,10 @@ export default function Quote() {
 
     useEffect(() => {
         if (!path && path.length === 0) return; 
-        var url = DOMAIN + variations_endpoint + ';path=' + path;
-        url += ';d=' + Math.round(Math.random()*100000000)
-        fetch(url)
-            .then(response => response.json())
+          aemHeadlessClient.runPersistedQuery('dfsite/m10QuoteVariarionsByPath', {
+            'path': path, 
+            'd': Math.round(Math.random()*100000000)
+          })
             .then(data => {
                 if (!data.data) return;
                 let quote = data.data.m10QuoteByPath.item;

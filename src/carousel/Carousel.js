@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import './Carousel.css'
+import AEMHeadless from '@adobe/aem-headless-client-js';
 
 const DOMAIN = 'https://publish-p91256-e801658.adobeaemcloud.com';
-const CAROUSEL_ENDPOINT = '/graphql/execute.json/dfsite/m09CarouselByPath';
+const ENDPOINT = '/graphql/execute.json';
 
 export default function Carousel() {
     const [path, setPath] = useState('');
     const [style, setStyle] = useState('');
     const [items, setItems] = useState([]);
     const [current, setCurrent] = useState(0);
+
+    const aemHeadlessClient = new AEMHeadless({
+        serviceURL: DOMAIN,
+        endpoint: ENDPOINT
+    })
 
     useEffect(() => {
         let queryParameters = new URLSearchParams(window.location.search)
@@ -17,8 +23,10 @@ export default function Carousel() {
 
     useEffect(() => {
         if (!path && path.length === 0) return; 
-        fetch(DOMAIN + CAROUSEL_ENDPOINT + ';path=' + path + ';d=' + Math.round(Math.random()*100000000))
-            .then(response => response.json())
+          aemHeadlessClient.runPersistedQuery('dfsite/m09CarouselByPath', {
+            'path': path, 
+            'd': Math.round(Math.random()*100000000)
+          })
             .then(data => {
                 if (!data.data) return;
                 let carousel = data.data.m09CarouselByPath.item;
