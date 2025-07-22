@@ -8,9 +8,27 @@ import {
 import './App.css'
 import Carousel from "./carousel/Carousel";
 import Quote from "./quote/Quote";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+
 
 export default function App() {
   return (
+    <HelmetProvider>
+    <Helmet>
+        {/* AEM Universal Editor :: CORE Library
+          Loads the LATEST Universal Editor library
+        */}
+        <script
+            src="https://universal-editor-service.adobe.io/cors.js"
+            async
+        />
+        <meta
+            name="urn:adobe:aue:system:aemconnection"
+            content={'aem:https://author-p91256-e801658.adobeaemcloud.com'}
+        />
+        
+
+    </Helmet>
     <Router>
       <div>
         <nav>
@@ -34,6 +52,7 @@ export default function App() {
         </Routes>
       </div>
     </Router>
+    </HelmetProvider>
   );
 }
 

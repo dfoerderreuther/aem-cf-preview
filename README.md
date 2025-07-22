@@ -23,6 +23,10 @@ Startup:
 
 `npm start`
 
+Startup https: 
+
+`npm run https`
+
 ## AEM Headless Client: 
 
 https://github.com/adobe/aem-headless-client-js

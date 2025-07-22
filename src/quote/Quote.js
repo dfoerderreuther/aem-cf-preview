@@ -59,15 +59,19 @@ function QuoteDisplay2({path, variation}) {
     const [quote, setQuote] = useState('');
     const [image, setImage] = useState('');
 
-    const QUOTE_ENDPOINT = '/graphql/execute.json/dfsite/m10QuoteByPath';
+    const aemHeadlessClient = new AEMHeadless({
+        serviceURL: DOMAIN,
+        endpoint: ENDPOINT
+    })
 
     useEffect(() => {
         if (!path && path.length === 0) return; 
-        var url = DOMAIN + QUOTE_ENDPOINT + ';path=' + path;
-        if (variation) url += ';variation=' + variation;
-        url += ';d=' + Math.round(Math.random()*100000000)
-        fetch(url)
-            .then(response => response.json())
+
+        aemHeadlessClient.runPersistedQuery('dfsite/m10QuoteByPath', {
+            'path': path, 
+            'variation': variation, 
+            'd': Math.round(Math.random()*100000000)
+          })
             .then(data => {
                 if (!data.data) return;
                 let quote = data.data.m10QuoteByPath.item;
@@ -78,11 +82,18 @@ function QuoteDisplay2({path, variation}) {
             });
     }, [path, variation])
 
-    return  <div className="quote">
+
+	const editorProps = {
+		"data-aue-resource": "urn:aemconnection:" + path + "/jcr:content/data/" + (variation ? variation : "master"),
+		"data-aue-type": "reference",
+		itemfilter: "cf"
+	};
+
+    return  <div className="quote" {...editorProps} >
         <Image image={image} />
-        <div className="text" dangerouslySetInnerHTML={{__html: quote}}></div>
-        <p className='name'>{name}</p>
-        <p className='title'>{title}</p>
+        <div className="text" dangerouslySetInnerHTML={{__html: quote}} data-aue-prop="quote" data-aue-type="text" data-aue-label="Quote"></div>
+        <p className='name' data-aue-prop="name" data-aue-type="text" data-aue-label="Name">{name}</p>
+        <p className='title' data-aue-prop="title" data-aue-type="text" data-aue-label="Title">{title}</p>
     </div>
 }
 

@@ -50,6 +50,12 @@ export default function Carousel() {
         if (style === null && !style) return;
         console.log('style', style)
     }, [style])
+
+    const editorProps = {
+		"data-aue-resource": "urn:aemconnection:" + path + "/jcr:content/data/master",
+		"data-aue-type": "reference",
+		itemfilter: "cf"
+	};
     
     return <>
         <div className="header">
@@ -57,7 +63,7 @@ export default function Carousel() {
             <h2>Path: {path}</h2>
             <p><a href="http://ee-style-guide.s3-website-eu-west-1.amazonaws.com/section/12.09" target="_blanl">EE Styleguide M09 Carousel</a></p>
         </div>
-        <div className={"Carousel " + style}>
+        <div className={"Carousel " + style} {...editorProps}>
             <button className="btn lft" onClick={actionPrevious}>&lt;</button>
             <Item item={items[current]} />
             <button className="btn rgt" onClick={actionNext}>&gt;</button>
@@ -68,10 +74,17 @@ export default function Carousel() {
 function Item({item}) {
     if (!item || !item.hasOwnProperty('title') || !item.hasOwnProperty('image')) return <></>
     console.log('item', item)
-    return <div className="item">
+
+    const editorProps = {
+		"data-aue-resource": "urn:aemconnection:" + item._path + "/jcr:content/data/master",
+		"data-aue-type": "reference",
+		itemfilter: "cf"
+	};
+
+    return <div className="item" {...editorProps}>
         <div className="text">
             <div className="inner">
-                <h3>{item.title}</h3>
+                <h3 data-aue-prop="title" data-aue-type="text" data-aue-label="Title">{item.title}</h3>
                 <Description item={item} /> 
                 
             </div>    
@@ -82,13 +95,13 @@ function Item({item}) {
 }
 function Description({item}) {
     if (item && item.description && item.description.html) return <>
-        <div className="description" dangerouslySetInnerHTML={{__html: item.description.html}}></div>
+        <div className="description" dangerouslySetInnerHTML={{__html: item.description.html}} data-aue-prop="description" data-aue-type="text" data-aue-label="Description"></div>
     </>
 }
 
 function CallToAction({item}) {
     if (item.action && item.callToAction) return <>
-        <a className="action" href={item.action} target="_blank">{item.callToAction}</a>
+        <a className="action" href={item.action} target="_blank" data-aue-prop="callToAction" data-aue-type="text" data-aue-label="Call To Action">{item.callToAction}</a>
     </>
 }
 
