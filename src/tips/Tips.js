@@ -8,6 +8,7 @@ const ENDPOINT = '/graphql/execute.json';
 export default function Tips() {
     const [path, setPath] = useState('');
     const [variations, setVariations] = useState([]);
+    const [type, setType] = useState('');
 
     const aemHeadlessClient = new AEMHeadless({
         serviceURL: DOMAIN,
@@ -29,6 +30,7 @@ export default function Tips() {
                 if (!data.data) return;
                 let tips = data.data.tipsByPath.item;
                 setVariations(tips._variations || [])
+                setType(tips.type)
             })
             .catch(error => {
                 console.error('Error fetching tips variations:', error);
@@ -40,6 +42,7 @@ export default function Tips() {
         <div className="header">
             <h1>M11 Tips</h1>
             <h2>Path: {path}</h2>
+            <h2>Type: {type}</h2>
         </div>
         <h3 className="cfTitle">Main variation</h3>
         <TipsDisplay path={path} />
@@ -104,7 +107,6 @@ function TipItem({item}) {
 	};
 
     return <div className="tip-item" {...editorProps}>
-        <div className="tip-type" data-aue-prop="type" data-aue-type="text" data-aue-label="Type">{item.type}</div>
         <div className="tip-message" dangerouslySetInnerHTML={{__html: item.message.html}} data-aue-prop="message" data-aue-type="text" data-aue-label="Message"></div>
         <CallToAction item={item} />
     </div>
