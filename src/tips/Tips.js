@@ -91,13 +91,35 @@ function TipsDisplay({path, variation}) {
 	};
     
     return <div className="Tips" {...editorProps}>
-        {items.map((item, index) => (
-            <TipItem key={index} item={item} />
-        ))}
+        {items.length > 0 && (
+            <div className="devices-container">
+                <div className="device-column iphone-16">
+                    <div className="device-title">iPhone 16</div>
+                    {items.map((item, index) => (
+                        <TipItem key={`iphone-16-${index}`} item={item} className="iphone-16" />
+                    ))}
+                    <div className="width-label">320px</div>
+                </div>
+                <div className="device-column iphone-16-pro-max">
+                    <div className="device-title">iPhone 16 Pro Max</div>
+                    {items.map((item, index) => (
+                        <TipItem key={`iphone-16-pro-max-${index}`} item={item} className="iphone-16-pro-max" />
+                    ))}
+                    <div className="width-label">375px</div>
+                </div>
+                <div className="device-column samsung-galaxy-s24-ultra">
+                    <div className="device-title">Samsung Galaxy S24 Ultra</div>
+                    {items.map((item, index) => (
+                        <TipItem key={`samsung-galaxy-s24-ultra-${index}`} item={item} className="samsung-galaxy-s24-ultra" />
+                    ))}
+                    <div className="width-label">430px</div>
+                </div>
+            </div>
+        )}
     </div>;
 }
 
-function TipItem({item}) {
+function TipItem({item, className}) {
     if (!item || !item.hasOwnProperty('type') || !item.hasOwnProperty('message')) return <></>
 
     const editorProps = {
@@ -106,7 +128,8 @@ function TipItem({item}) {
 		itemfilter: "cf"
 	};
 
-    return <div className="tip-item" {...editorProps}>
+    return <div className={`tip-item ${className || ''}`} {...editorProps}>
+        <div className="tip-icon">✈️</div>
         <div className="tip-message" dangerouslySetInnerHTML={{__html: item.message.html}} data-aue-prop="message" data-aue-type="text" data-aue-label="Message"></div>
         <CallToAction item={item} />
     </div>

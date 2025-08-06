@@ -1,33 +1,84 @@
 .Tips {
     margin: 0;
     padding: 20px;
-    background-color: #5514b4;
+    background-color: #f5f5f5; /* Light grey background */
     position: relative;
 }
 
-.Tips .tip-item {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0.9);
+/* Device columns container */
+.Tips .devices-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.Tips .device-column {
+    flex: 1;
+    background-color: white;
     border-radius: 10px;
-    padding: 20px;
-    position: relative;
+    padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}  
-
-.Tips .tip-type {
-    font-weight: bold;
-    font-size: 18px;
-    color: #5514b4;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
+/* Device-specific widths */
+.Tips .device-column.iphone-16 {
+    width: 320px;
+    min-width: 320px;
+    max-width: 320px;
+}
+
+.Tips .device-column.iphone-16-pro-max {
+    width: 375px;
+    min-width: 375px;
+    max-width: 375px;
+}
+
+.Tips .device-column.samsung-galaxy-s24-ultra {
+    width: 430px;
+    min-width: 430px;
+    max-width: 430px;
+}
+
+.Tips .device-title {
+    font-weight: bold;
+    font-size: 12px;
+    color: #5514b4;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+/* Individual tip item - 3 column layout */
+.Tips .tip-item {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 15px;
+    align-items: center;
+    background-color: white;
+    border-radius: 0;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e5e5;
+}
+
+/* Plane icon column */
+.Tips .tip-icon {
+    font-size: 24px;
+    color: #5514b4;
+    text-align: center;
+    align-self: flex-start;
+}
+
+/* Message column */
 .Tips .tip-message {
-    margin-bottom: 15px;
     line-height: 1.6;
     color: #333;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
 }
 
 .Tips .tip-message h1,
@@ -36,58 +87,143 @@
 .Tips .tip-message h4,
 .Tips .tip-message h5,
 .Tips .tip-message h6 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.Tips .tip-message p {
-    margin-bottom: 10px;
-}
-
-.Tips .tip-action {
-    display: inline-block;
-    background-color: #5514b4;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.Tips .tip-action:hover {
-    background-color: #7c3aed;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .Tips .tip-item {
-        margin: 15px;
-        padding: 15px;
-        max-width: none;
-    }
-    
-    .Tips .tip-type {
-        font-size: 16px;
-    }
-}
-
-/* Small variant */
-.Tips.small .tip-item {
-    max-width: 400px;
-    padding: 15px;
-}
-
-.Tips.small .tip-type {
+    margin: 0;
     font-size: 16px;
 }
 
-/* Large variant */
-.Tips.large .tip-item {
-    max-width: 800px;
-    padding: 30px;
+.Tips .tip-message p {
+    margin: 0;
 }
 
-.Tips.large .tip-type {
-    font-size: 20px;
+/* Call to action column */
+.Tips .tip-action {
+    display: inline-block;
+    background-color: white;
+    color: #5514b4;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid #5514b4;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    align-self: flex-start;
+}
+
+.Tips .tip-action:hover {
+    background-color: #5514b4;
+    color: white;
+}
+
+/* Device-specific sizes to demonstrate breaking points */
+.Tips .iphone-16 {
+    /* Standard size */
+}
+
+.Tips .iphone-16-pro-max {
+    /* Slightly larger */
+    padding: 18px;
+    font-size: 15px;
+}
+
+.Tips .iphone-16-pro-max .tip-message {
+    font-size: 15px;
+}
+
+.Tips .iphone-16-pro-max .tip-action {
+    padding: 10px 18px;
+    font-size: 13px;
+    border-radius: 22px;
+}
+
+.Tips .samsung-galaxy-s24-ultra {
+    /* Largest size */
+    padding: 20px;
+    font-size: 16px;
+}
+
+.Tips .samsung-galaxy-s24-ultra .tip-message {
+    font-size: 16px;
+}
+
+.Tips .samsung-galaxy-s24-ultra .tip-action {
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 24px;
+}
+
+.Tips .samsung-galaxy-s24-ultra .tip-icon {
+    font-size: 28px;
+}
+
+/* Width labels */
+.Tips .width-label {
+    font-size: 10px;
+    color: #999;
+    text-align: left;
+    margin-top: 5px;
+    font-family: monospace;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+    .Tips .devices-container {
+        gap: 15px;
+    }
+    
+    .Tips .device-column {
+        min-width: 300px;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Tips .devices-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .Tips .device-column {
+        min-width: auto;
+        max-width: none;
+        margin: 0 10px;
+    }
+    
+    .Tips .tip-item {
+        grid-template-columns: 35px 1fr auto;
+        gap: 10px;
+        padding: 12px;
+    }
+    
+    .Tips .tip-icon {
+        font-size: 20px;
+    }
+    
+    .Tips .tip-action {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Tips .tip-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .Tips .tip-icon {
+        grid-row: 1;
+        font-size: 24px;
+    }
+    
+    .Tips .tip-message {
+        grid-row: 2;
+    }
+    
+    .Tips .tip-action {
+        grid-row: 3;
+        justify-self: center;
+    }
 }
