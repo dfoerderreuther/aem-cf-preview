@@ -98,21 +98,18 @@ function TipsDisplay({path, variation}) {
                     {items.map((item, index) => (
                         <TipItem key={`iphone-16-${index}`} item={item} className="iphone-16" />
                     ))}
-                    <div className="width-label">320px</div>
                 </div>
                 <div className="device-column iphone-16-pro-max">
                     <div className="device-title">iPhone 16 Pro Max</div>
                     {items.map((item, index) => (
                         <TipItem key={`iphone-16-pro-max-${index}`} item={item} className="iphone-16-pro-max" />
                     ))}
-                    <div className="width-label">375px</div>
                 </div>
                 <div className="device-column samsung-galaxy-s24-ultra">
                     <div className="device-title">Samsung Galaxy S24 Ultra</div>
                     {items.map((item, index) => (
                         <TipItem key={`samsung-galaxy-s24-ultra-${index}`} item={item} className="samsung-galaxy-s24-ultra" />
                     ))}
-                    <div className="width-label">430px</div>
                 </div>
             </div>
         )}

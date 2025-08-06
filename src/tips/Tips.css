@@ -54,11 +54,11 @@
 .Tips .tip-item {
     display: grid;
     grid-template-columns: 40px 1fr auto;
-    gap: 15px;
+    gap: 5px;
     align-items: center;
     background-color: white;
     border-radius: 0;
-    padding: 15px;
+    padding: 5px;
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border: 1px solid #e5e5e5;
@@ -69,7 +69,7 @@
     font-size: 24px;
     color: #5514b4;
     text-align: center;
-    align-self: flex-start;
+    align-self: center;
 }
 
 /* Message column */
@@ -108,7 +108,7 @@
     font-size: 12px;
     transition: all 0.3s ease;
     white-space: nowrap;
-    align-self: flex-start;
+    align-self: center;
 }
 
 .Tips .tip-action:hover {
@@ -123,7 +123,7 @@
 
 .Tips .iphone-16-pro-max {
     /* Slightly larger */
-    padding: 18px;
+    padding: 8px;
     font-size: 15px;
 }
 
@@ -139,7 +139,7 @@
 
 .Tips .samsung-galaxy-s24-ultra {
     /* Largest size */
-    padding: 20px;
+    padding: 10px;
     font-size: 16px;
 }
 
@@ -164,6 +164,13 @@
     text-align: left;
     margin-top: 5px;
     font-family: monospace;
+}
+
+/* Variation title styling */
+.cfTitle {
+    padding: 5px 24px;
+    border-bottom: none;
+    margin-bottom: 5px;
 }
 
 /* Responsive breakpoints */
