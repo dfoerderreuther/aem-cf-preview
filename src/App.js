@@ -8,6 +8,7 @@ import {
 import './App.css'
 import Carousel from "./carousel/Carousel";
 import Quote from "./quote/Quote";
+import Tips from "./tips/Tips";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 
@@ -42,6 +43,9 @@ export default function App() {
             <li>
               <Link to="/preview/m10quote?param=/content/dam/dfsite/btc/iphone-17/marks-quote">M10 Quote</Link>
             </li>
+            <li>
+              <Link to="/preview/m11tips?param=/content/dam/dfsite/nw/travel-tips">M11 Tips</Link>
+            </li>
           </ul>
         </nav>
 
@@ -49,6 +53,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/preview/m09carousel" element={<Carousel />} />
           <Route path="/preview/m10quote" element={<Quote />} />
+          <Route path="/preview/m11tips" element={<Tips />} />
         </Routes>
       </div>
     </Router>
@@ -57,10 +62,10 @@ export default function App() {
 }
 
 function Home() {
-  return <div class="header">
+  return <div className="header">
       <h1>Home</h1>
       <p>This is an application to offer previous to AEM Content Fragments.</p>
-      <p><a href="http://ee-style-guide.s3-website-eu-west-1.amazonaws.com/" target="_blanl">EE Styleguide</a></p>
+      <p><a href="http://ee-style-guide.s3-website-eu-west-1.amazonaws.com/" target="_blank">EE Styleguide</a></p>
   </div>;
 }
 

@@ -1,0 +1,93 @@
+.Tips {
+    margin: 0;
+    padding: 20px;
+    background-color: #5514b4;
+    position: relative;
+}
+
+.Tips .tip-item {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}  
+
+.Tips .tip-type {
+    font-weight: bold;
+    font-size: 18px;
+    color: #5514b4;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.Tips .tip-message {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.Tips .tip-message h1,
+.Tips .tip-message h2,
+.Tips .tip-message h3,
+.Tips .tip-message h4,
+.Tips .tip-message h5,
+.Tips .tip-message h6 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.Tips .tip-message p {
+    margin-bottom: 10px;
+}
+
+.Tips .tip-action {
+    display: inline-block;
+    background-color: #5514b4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.Tips .tip-action:hover {
+    background-color: #7c3aed;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .Tips .tip-item {
+        margin: 15px;
+        padding: 15px;
+        max-width: none;
+    }
+    
+    .Tips .tip-type {
+        font-size: 16px;
+    }
+}
+
+/* Small variant */
+.Tips.small .tip-item {
+    max-width: 400px;
+    padding: 15px;
+}
+
+.Tips.small .tip-type {
+    font-size: 16px;
+}
+
+/* Large variant */
+.Tips.large .tip-item {
+    max-width: 800px;
+    padding: 30px;
+}
+
+.Tips.large .tip-type {
+    font-size: 20px;
+}
