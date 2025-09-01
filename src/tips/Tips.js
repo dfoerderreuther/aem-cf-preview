@@ -125,8 +125,22 @@ function TipItem({item, className}) {
 		itemfilter: "cf"
 	};
 
+    // Select icon based on tip type
+    const getIcon = (type) => {
+        switch(type?.toLowerCase()) {
+            case 'travel':
+                return '✈️';
+            case 'money':
+                return '🪙';
+            case 'security':
+                return '🔒';
+            default:
+                return '💡'; 
+        }
+    };
+
     return <div className={`tip-item ${className || ''}`} {...editorProps}>
-        <div className="tip-icon">✈️</div>
+        <div className="tip-icon">{getIcon(item.type)}</div>
         <div className="tip-message" dangerouslySetInnerHTML={{__html: item.message.html}} data-aue-prop="message" data-aue-type="text" data-aue-label="Message"></div>
         <CallToAction item={item} />
     </div>
